@@ -1,0 +1,7 @@
+venv/
+.idea/
+__pycache__/
+*.pyc
+*.pyo
+AtoZ_3.1/
+*.docx
