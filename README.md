@@ -18,7 +18,7 @@
 In our project we basically focus on producing a model which can recognise Fingerspelling based hand gestures in order to form a complete word by combining each gesture. The gestures we aim to train are as given in the image below. 
 
 
-![Spanish_SL](https://user-images.githubusercontent.com/99630855/201489493-585ffe5c-f460-402a-b558-0d03370b4f92.jpg)
+
 
 **Requirements:**
 
@@ -47,7 +47,7 @@ It uses electromechanical devices to provide exact hand configuration, and posit
 In vision-based methods, the computer webcam is the input device for observing the information of hands and/or fingers. The Vision Based methods require only a camera, thus realizing a natural interaction between humans and computers without the use of any extra devices, thereby reducing costs.  The main challenge of vision-based hand detection ranges from coping with the large variability of the human hand’s appearance due to a huge number of hand movements, to different skin-color possibilities as well as to the variations in viewpoints, scales, and speed of the camera capturing the scene. 
 
  
-![Screenshot (224)](https://user-images.githubusercontent.com/99630855/201489523-0804652e-1a38-4242-ad69-8bfafb25f55a.png)
+
 
  
 
@@ -55,9 +55,7 @@ In vision-based methods, the computer webcam is the input device for observing t
 
 In this approach for hand detection, firstly we detect hand from image that is acquired by webcam and for detecting a hand we used media pipe library which is used for image processing. So, after finding the hand from image we get the region of interest (Roi) then we cropped that image and convert the image to gray image using OpenCV library after we applied the gaussian blur .The filter can be easily applied using open computer vision library also known as OpenCV. Then we converted the gray image to binary image using threshold and Adaptive threshold methods. 
 
-We have collected images of different signs of different angles  for sign letter A to Z. 
 
- ![fdfScreenshot (227)](https://user-images.githubusercontent.com/99630855/201489564-04b0416d-f976-4946-80d3-01bab6897ce3.png) 
 
 - in this method there are many loop holes like your hand must be ahead of clean soft background and that is in proper lightning condition then only this method will give good accurate results but in real world we dont get good background everywhere and we don’t get good lightning conditions too. 
 
