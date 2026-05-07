@@ -8,7 +8,7 @@ import traceback
 
 
 
-#model = load_model('C:\\Users\\devansh raval\\PycharmProjects\\pythonProject\\cnn9.h5')
+#model = load_model('cnn9.h5')
 
 capture = cv2.VideoCapture(0)
 
@@ -28,9 +28,9 @@ offset = 30
 step = 1
 flag=False
 suv=0
-#C:\Users\devansh raval\PycharmProjects\pythonProject
+# Project Path Removed
 white=np.ones((400,400),np.uint8)*255
-cv2.imwrite("C:\\Users\\devansh raval\\PycharmProjects\\pythonProject\\white.jpg",white)
+cv2.imwrite("white.jpg",white)
 
 
 while True:
@@ -87,7 +87,7 @@ while True:
             hand = hands[0]
             x, y, w, h = hand['bbox']
             image = frame[y - offset:y + h + offset, x - offset:x + w + offset]
-            white = cv2.imread("C:\\Users\\devansh raval\\PycharmProjects\\pythonProject\\white.jpg")
+            white = cv2.imread("white.jpg")
             # img_final=img_final1=img_final2=0
             handz = hd2.findHands(image, draw=False, flipType=True)
             if handz:
