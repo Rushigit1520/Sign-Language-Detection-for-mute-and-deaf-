@@ -1,12 +1,14 @@
 import math
 import cv2
+import os
 from cvzone.HandTrackingModule import HandDetector
 import numpy as np
 from keras.models import load_model
 import traceback
 
-model = load_model('/cnn8grps_rad1_model.h5')
 # Author: Rushikesh Farakate
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model = load_model(os.path.join(BASE_DIR, 'cnn8grps_rad1_model.h5'))
 white = np.ones((400, 400), np.uint8) * 255
 cv2.imwrite("white.jpg", white)
 
