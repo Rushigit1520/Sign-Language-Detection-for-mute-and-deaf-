@@ -23,7 +23,7 @@ class HeuristicClassifier:
             if pl in l:
                 if (pts[5][0] < pts[4][0]):
                     ch1 = 0
-                    print("++++++++++++++++++")
+
                     # print("00000")
     
             # condition for [c0][aemnst]
@@ -169,7 +169,7 @@ class HeuristicClassifier:
     
     
             # condition for [yj][x]
-            print("2222  ch1=+++++++++++++++++", ch1, ",", ch2)
+
             l = [[7, 2]]
             pl = [ch1, ch2]
             if pl in l:
@@ -388,7 +388,7 @@ class HeuristicClassifier:
     
     
     
-            print(pts[4][0] < pts[5][0])
+
             if ch1 == 'E' or ch1=='Y' or ch1=='B':
                 if (pts[4][0] < pts[5][0]) and (pts[6][1] > pts[8][1] and pts[10][1] > pts[12][1] and pts[14][1] > pts[16][1] and pts[18][1] > pts[20][1]):
                     ch1="next"
