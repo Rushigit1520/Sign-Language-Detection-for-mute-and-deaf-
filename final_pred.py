@@ -30,15 +30,16 @@ LOOP_DELAY = 1
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s", datefmt="%H:%M:%S")
 log = logging.getLogger("SignLangApp")
 
-hd = HandDetector(maxHands=1)
-hd2 = HandDetector(maxHands=1)
+hd = HandDetector(maxHands=1, detectionCon=0.65)
+hd2 = HandDetector(maxHands=1, detectionCon=0.65)
 spell_dict = enchant.Dict("en-US")
+
+# Pre-allocate blank white canvas in memory (never read from disk)
+WHITE_TEMPLATE = np.ones((CANVAS_SIZE, CANVAS_SIZE, 3), np.uint8) * 255
 
 
 def draw_skeleton(pts, bw, bh):
-    white = cv2.imread(WHITE_IMG_PATH)
-    if white is None:
-        white = np.ones((CANVAS_SIZE, CANVAS_SIZE, 3), np.uint8) * 255
+    white = WHITE_TEMPLATE.copy()  # Fast numpy copy, NO disk I/O
     ox = ((CANVAS_SIZE - bw) // 2) - 15
     oy = ((CANVAS_SIZE - bh) // 2) - 15
     for s, e in [(0,4),(5,8),(9,12),(13,16),(17,20)]:
@@ -60,6 +61,11 @@ class Application:
             log.error("Model not found: %s", MODEL_PATH); sys.exit(1)
         self.model = load_model(MODEL_PATH)
         log.info("Model loaded from %s", MODEL_PATH)
+
+        # Warm up model with dummy prediction (first call is always slow)
+        dummy = np.zeros((1, CANVAS_SIZE, CANVAS_SIZE, 3), dtype=np.uint8)
+        self.model.predict(dummy, verbose=0)
+        log.info("Model warmed up - ready for real-time inference")
 
         self.speak_engine = pyttsx3.init()
         self.speak_engine.setProperty("rate", 100)
